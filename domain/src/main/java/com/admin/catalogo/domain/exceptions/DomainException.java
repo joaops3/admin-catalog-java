@@ -7,7 +7,7 @@ import java.util.List;
 public class DomainException extends NoStackTraceException {
     private final List<Error> errors;
 
-    private DomainException(final String message,  final List<Error> anErrors){
+    public DomainException(final String message,  final List<Error> anErrors){
         super(message);
         this.errors = anErrors;
     }
