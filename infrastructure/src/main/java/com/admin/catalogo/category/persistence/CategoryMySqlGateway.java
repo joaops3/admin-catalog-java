@@ -1,4 +1,4 @@
-package com.admin.catalogo.infrastructure.persistence;
+package com.admin.catalogo.category.persistence;
 
 
 import com.admin.catalogo.domain.category.Category;
@@ -6,9 +6,15 @@ import com.admin.catalogo.domain.category.CategoryGateway;
 import com.admin.catalogo.domain.category.CategoryID;
 import com.admin.catalogo.domain.category.CategorySearchQuery;
 import com.admin.catalogo.domain.pagination.Pagination;
+import com.admin.catalogo.utils.SpecificationUtils;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+
+import static com.admin.catalogo.utils.SpecificationUtils.like;
 
 @Service
 public class CategoryMySqlGateway implements CategoryGateway {
@@ -52,6 +58,17 @@ public class CategoryMySqlGateway implements CategoryGateway {
     @Override
     public Pagination<Category> findAll(CategorySearchQuery query) {
 
-        return null;
+        final var page = PageRequest.of(query.page(), query.perPage(), Sort.by(Sort.Direction.fromString(query.direction()), query.sort()));
+        this.categoryRepository.findAll();
+
+        final var spectification = Optional.ofNullable(query.terms())
+                .filter(str -> !str.isBlank())
+                .map(str -> {
+                    return SpecificationUtils.<CategoryJpaEntity>like("name", str).or(like("description", str));
+                })
+                .orElse(null);
+
+        var data = this.categoryRepository.findAll(Specification.where(spectification), page);
+        return new Pagination<>(data.getNumber(), data.getSize(), data.getTotalElements(), data.map(CategoryJpaEntity::toAggregate).toList());
     }
 }

@@ -1,9 +1,11 @@
-package com.admin.catalogo.infrastructure;
+package com.admin.catalogo;
 
+import com.admin.catalogo.configuration.WebServerConfig;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.data.repository.CrudRepository;
@@ -17,12 +19,9 @@ import java.util.Collection;
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @ActiveProfiles("test")
-@DataJpaTest
-@ComponentScan(includeFilters = {
-        @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".*[MySqlGateway]")
-})
-@ExtendWith(MySqlGatewayTest.CleanUpException.class)
-public @interface MySqlGatewayTest {
+@SpringBootTest(classes = WebServerConfig.class)
+@ExtendWith(IntegrationTest.CleanUpException.class)
+public @interface IntegrationTest {
 
 
     static class CleanUpException implements BeforeEachCallback {

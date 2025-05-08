@@ -1,4 +1,4 @@
-package com.admin.catalogo.infrastructure.configuration;
+package com.admin.catalogo.configuration;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

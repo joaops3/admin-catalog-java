@@ -4,10 +4,10 @@ package com.admin.catalogo.infrastructure.category;
 import com.admin.catalogo.domain.category.Category;
 import com.admin.catalogo.domain.category.CategoryID;
 import com.admin.catalogo.domain.category.CategorySearchQuery;
-import com.admin.catalogo.infrastructure.MySqlGatewayTest;
-import com.admin.catalogo.infrastructure.persistence.CategoryJpaEntity;
-import com.admin.catalogo.infrastructure.persistence.CategoryMySqlGateway;
-import com.admin.catalogo.infrastructure.persistence.CategoryRepository;
+import com.admin.catalogo.MySqlGatewayTest;
+import com.admin.catalogo.category.persistence.CategoryJpaEntity;
+import com.admin.catalogo.category.persistence.CategoryMySqlGateway;
+import com.admin.catalogo.category.persistence.CategoryRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

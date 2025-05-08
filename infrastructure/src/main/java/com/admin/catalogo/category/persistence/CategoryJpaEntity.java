@@ -1,4 +1,4 @@
-package com.admin.catalogo.infrastructure.persistence;
+package com.admin.catalogo.category.persistence;
 
 import com.admin.catalogo.domain.category.Category;
 import com.admin.catalogo.domain.category.CategoryID;
