@@ -1,4 +1,4 @@
-package com.admin.catalogo.utils;
+package com.admin.catalogo.infrastructure.utils;
 
 import org.springframework.data.jpa.domain.Specification;
 

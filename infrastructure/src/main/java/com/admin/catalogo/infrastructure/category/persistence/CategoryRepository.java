@@ -1,4 +1,4 @@
-package com.admin.catalogo.category.persistence;
+package com.admin.catalogo.infrastructure.category.persistence;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,4 +1,4 @@
-package com.admin.catalogo.category.persistence;
+package com.admin.catalogo.infrastructure.category;
 
 
 import com.admin.catalogo.domain.category.Category;
@@ -6,7 +6,9 @@ import com.admin.catalogo.domain.category.CategoryGateway;
 import com.admin.catalogo.domain.category.CategoryID;
 import com.admin.catalogo.domain.category.CategorySearchQuery;
 import com.admin.catalogo.domain.pagination.Pagination;
-import com.admin.catalogo.utils.SpecificationUtils;
+import com.admin.catalogo.infrastructure.category.persistence.CategoryJpaEntity;
+import com.admin.catalogo.infrastructure.category.persistence.CategoryRepository;
+import com.admin.catalogo.infrastructure.utils.SpecificationUtils;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
@@ -14,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-import static com.admin.catalogo.utils.SpecificationUtils.like;
+import static com.admin.catalogo.infrastructure.utils.SpecificationUtils.like;
 
 @Service
 public class CategoryMySqlGateway implements CategoryGateway {

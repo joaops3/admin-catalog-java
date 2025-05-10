@@ -1,7 +1,9 @@
-package com.admin.catalogo.infrastructure.category.persistence;
+package com.admin.catalogo.infrastructure;
 
 import com.admin.catalogo.domain.category.Category;
 import com.admin.catalogo.MySqlGatewayTest;
+import com.admin.catalogo.infrastructure.category.persistence.CategoryJpaEntity;
+import com.admin.catalogo.infrastructure.category.persistence.CategoryRepository;
 import org.hibernate.PropertyValueException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

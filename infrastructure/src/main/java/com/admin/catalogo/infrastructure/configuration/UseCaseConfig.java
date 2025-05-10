@@ -1,4 +1,4 @@
-package com.admin.catalogo.configuration;
+package com.admin.catalogo.infrastructure.configuration;
 
 import com.admin.catalogo.application.category.create.CreateCategoryUseCase;
 import com.admin.catalogo.application.category.create.DefaultCreateCategoryUseCase;
