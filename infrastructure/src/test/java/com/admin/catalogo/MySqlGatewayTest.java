@@ -16,7 +16,7 @@ import java.util.Collection;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
-@ActiveProfiles("test")
+@ActiveProfiles("test-integration")
 @DataJpaTest
 @ComponentScan(includeFilters = {
         @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".[MySqlGateway]")

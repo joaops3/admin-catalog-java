@@ -2,7 +2,8 @@ package com.admin.catalogo.infrastructure.api;
 
 import com.admin.catalogo.application.category.retrieve.get.CategoryOutput;
 import com.admin.catalogo.domain.pagination.Pagination;
-import com.admin.catalogo.infrastructure.category.models.CreateCategoryApiInput;
+import com.admin.catalogo.infrastructure.category.models.CreateCategoryApiRequest;
+import com.admin.catalogo.infrastructure.category.models.UpdateCategoryRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -27,7 +28,7 @@ public interface CategoryAPI {
             @ApiResponse(responseCode = "422", description = "Unprocessable error"),
             @ApiResponse(responseCode = "500", description = "An internal server error was thrown")
     })
-    public ResponseEntity<?> createCategory(@RequestBody @Valid CreateCategoryApiInput dto);
+    public ResponseEntity<?> createCategory(@RequestBody @Valid CreateCategoryApiRequest dto);
 
     @GetMapping
     @Operation(summary = "List all categories")
@@ -51,4 +52,25 @@ public interface CategoryAPI {
             @ApiResponse(responseCode = "500", description = "An internal server error was thrown")
     })
     public ResponseEntity<CategoryOutput> getCategoryById(@PathVariable(name = "id") final String id);
+
+
+
+    @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "update a category by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Category update successfully"),
+            @ApiResponse(responseCode = "422", description = "Unprocessable error"),
+            @ApiResponse(responseCode = "500", description = "An internal server error was thrown")
+    })
+    public ResponseEntity<?> updateCategory(@PathVariable(name = "id") final String id, @RequestBody UpdateCategoryRequest dto);
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "update a category by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Category update successfully"),
+            @ApiResponse(responseCode = "422", description = "Unprocessable error"),
+            @ApiResponse(responseCode = "500", description = "An internal server error was thrown")
+    })
+    public void deleteCategory(@PathVariable(name = "id") final String id);
 }

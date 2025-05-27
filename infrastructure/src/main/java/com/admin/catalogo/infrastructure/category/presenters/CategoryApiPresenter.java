@@ -1,7 +1,9 @@
 package com.admin.catalogo.infrastructure.category.presenters;
 
 import com.admin.catalogo.application.category.retrieve.get.CategoryOutput;
-import com.admin.catalogo.infrastructure.category.models.CategoryApiOutput;
+import com.admin.catalogo.application.category.retrieve.list.CategoryListOutput;
+import com.admin.catalogo.infrastructure.category.models.CategoryApiResponse;
+import com.admin.catalogo.infrastructure.category.models.CategoryListResponse;
 
 import java.util.function.Function;
 
@@ -19,7 +21,7 @@ public interface CategoryApiPresenter {
         );
     }
 
-    Function<CategoryOutput, CategoryApiOutput> present = output -> new CategoryApiOutput(
+    Function<CategoryOutput, CategoryApiResponse> present = output -> new CategoryApiResponse(
             output.id().getValue(),
             output.name(),
             output.description(),
@@ -28,4 +30,15 @@ public interface CategoryApiPresenter {
             output.updatedAt(),
             output.deletedAt()
     );
+
+    static CategoryListResponse present(final CategoryListOutput output) {
+        return new CategoryListResponse(
+                output.id().getValue(),
+                output.name(),
+                output.description(),
+                output.isActive(),
+                output.createdAt()
+
+        );
+    }
 }

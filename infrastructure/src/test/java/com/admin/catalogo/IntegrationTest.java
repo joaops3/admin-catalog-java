@@ -15,7 +15,7 @@ import java.util.Collection;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
-@ActiveProfiles("test")
+@ActiveProfiles("test-integration")
 @SpringBootTest(classes = WebServerConfig.class)
 @ExtendWith(IntegrationTest.CleanUpException.class)
 public @interface IntegrationTest {
